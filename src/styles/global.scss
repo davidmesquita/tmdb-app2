@@ -1,0 +1,31 @@
+@import './colors.scss';
+@import './responsive.scss';
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+  font-size: calc(100vw / 1440 * 10);
+}
+@media (max-width: 768px) {
+  html{
+    font-size: calc(100vw / 500 * 10);
+  }
+}
+
+html,
+body{
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+
+
+}
+body{
+  background-image: url('../assets/background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color:var(--primary900);
+}

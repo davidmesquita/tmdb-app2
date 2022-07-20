@@ -1,0 +1,65 @@
+@import '../styles/typography.scss';
+@import '../styles/responsive.scss';
+
+.container {
+  padding-top: 12rem;
+  padding-bottom: 3rem;
+  max-width: 120rem;
+  margin: 0px auto;
+
+  @include breakPoint {
+    padding: 0 3.2rem;
+    padding-top: 10rem;
+  }
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  max-width: 58.8rem;
+  color: var(--gray50);
+
+  @include breakPoint {
+    max-width: 100%;
+  }
+
+  .title {
+    @include headingOne;
+  }
+
+  .description {
+    color: var(--gray300);
+    @include bodyRegular;
+
+    span {
+      color: var(--primary300);
+    }
+  }
+
+}
+
+.tabFilter {
+  display: flex;
+  margin-top: 8rem;
+}
+
+.inputTxt {
+  margin-top: 2.4rem;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 2.4rem 0;
+  color: var(--gray400);
+
+  strong {
+    @include headingThree;
+  }
+
+  span {
+    @include bodyRegular;
+  }
+}

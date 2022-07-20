@@ -1,0 +1,17 @@
+@import '../components/NavBar/styles.scss';
+
+$mobile:768px;
+
+@mixin breakPoint ($breakpoint: $mobile){
+  @media(max-width: $breakpoint) {
+    @content
+  }
+
+};
+
+@media (max-width: 768px) {
+  html {
+    font-size: calc(100vw / 500 * 10);
+  }
+};
+

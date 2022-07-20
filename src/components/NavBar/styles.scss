@@ -1,0 +1,57 @@
+@import '../../styles/typography.scss';
+@import '../../styles/colors.scss';
+
+.nav-header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 12rem;
+  height: 8rem;
+  width: 100%;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary900);
+  
+  
+}
+@media (max-width: 768px) {
+  .nav-header {
+    padding: 2rem 3rem;
+  }
+}
+
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+}
+
+.navLinks {
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 3.2rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+  }
+  
+}
+
+.navItens {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  
+  a {
+    @include linkRegular();
+    color: var(--gray200);
+    text-decoration: none;
+  }
+  .arrow{
+    width: 2rem;
+    height: 2rem;
+  }
+}
