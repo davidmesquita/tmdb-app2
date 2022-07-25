@@ -1,13 +1,11 @@
 import '../styles/global.scss'
 import './styles.scss'
-import { InputTxt } from '../components/InputTxt'
 import { Filters } from '../components/Filter'
 import { Card } from '../components/CardMovie'
 import { useFiltersContext, Filter } from '../components/context/filterContext'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useContent } from '../hooks/useContent'
-import { apiKey } from '../api'
 import searchicon from '../assets/icons/searchicon.svg'
 
 type ContentData = {
@@ -30,16 +28,13 @@ type searchResultsData = {
   vote_average: number
 
 }
-
-
 export function Home() {
   const { filters, currentFilter, setCurrentFilter } = useFiltersContext()
   const [data, setData] = useState<ContentData[]>([])
   const [query, setQuery] = useState("")
-  const [searchResults, setSearchResults] = useState<searchResultsData[]>([])
+  const [searchResults, setSearchResults] = useState<ContentData[]>([])
 
-
-  const { loadMovies, loadTvShows } = useContent()
+  const { loadMovies, loadTvShows, loadSearchResults } = useContent(query)
   const navigate = useNavigate()
 
   async function handleFilterChange(filter: Filter) {
@@ -69,25 +64,15 @@ export function Home() {
   function navigateDetails(id: number, typeOfContent: string) {
     navigate(`/detail/${typeOfContent}/${id}`)
   }
+  async function getSearchResults(){
+    const searchResults = loadSearchResults()
+    setSearchResults(await searchResults)
+  }
   useEffect(() => {
-
     if (query) {
-      fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`)
-
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response.results)
-          setSearchResults(response.results)
-
-        })
+      getSearchResults()
     }
-
   }, [query])
-
-
-
-
-
 
   return (
     <div className='container'>
@@ -110,20 +95,14 @@ export function Home() {
             >
             </input>
           </div >
-
         </div>
       </section>
-
       {query.length > 0 ?
         <>
-         
-
           <section>
             <header className="category">
               <strong>Results ({searchResults.length})</strong>
-
             </header>
-
             <div className='MovieGalery'>
               {searchResults?.map((content) => (
                 <Card key={content.id}
@@ -135,8 +114,6 @@ export function Home() {
                 />
               ))}
             </div>
-
-
           </section>
         </> :
         <>
@@ -147,7 +124,7 @@ export function Home() {
 
           <section>
             <header className="category">
-              <strong>{currentFilter.title}</strong>
+              <strong>{currentFilter.title} ({data.length})</strong>
 
             </header>
 
@@ -162,12 +139,9 @@ export function Home() {
                 />
               ))}
             </div>
-
-
           </section>
         </>
       }
     </div>
   )
-
 }

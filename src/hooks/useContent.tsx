@@ -35,11 +35,19 @@ export type ContentDetail = {
   episode_run_time: number
 }
 
-export function useContent() {
+
+export function useContent(query?:string) {
   async function loadMovies(): Promise<ContentData[]> {
 
     const response = await api.get<TheMoviesDBResponse<ContentData[]>>(
       `/movie/popular/?api_key=${apiKey}&language=en-US&page=1`
+    );
+    return response.data.results;
+  }
+  async function loadSearchResults(): Promise<ContentData[]> {
+
+    const response = await api.get<TheMoviesDBResponse<ContentData[]>>(
+      `/search/movie?api_key=${apiKey}&query=${query}`
     );
     return response.data.results;
   }
@@ -74,5 +82,6 @@ export function useContent() {
     loadTvShowDetails,
     loadMovies,
     loadMovieDetails,
+    loadSearchResults
   }
 }

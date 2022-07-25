@@ -4,7 +4,6 @@ import { ContentDetail, useContent } from "../hooks/useContent"
 import starIcon from '../assets/icons/staricon.svg'
 import './styles.scss'
 
-
 export function Details() {
   const IMAGE_PATH = "https://image.tmdb.org/t/p/original"
   const { id, typeContent } = useParams()
@@ -59,7 +58,6 @@ export function Details() {
                   <strong>
                     {typeContent}
                   </strong>
-
                 </div>
                 <div className="StatusInfoContentContainer">
                   <span>Status</span>
@@ -92,9 +90,7 @@ export function Details() {
                   </strong>
                 </div>
               </div>
-
             </div>
-
           ) : (
             <div className="MovieInfos">
                <div className="StatusInfoContainer">
@@ -103,7 +99,6 @@ export function Details() {
                   <strong>
                     {typeContent}
                   </strong>
-
                 </div>
                 <div className="StatusInfoContentContainer">
                   <span>Status</span>
@@ -116,7 +111,6 @@ export function Details() {
                   <strong>
                     {content?.first_air_date}
                   </strong>
-
                 </div>
                 <div className="StatusInfoContentContainer">
                   <span>Last air date</span>
@@ -129,7 +123,6 @@ export function Details() {
                   <strong>
                     {content?.number_of_seasons}
                   </strong>
-
                 </div>
                 <div className="StatusInfoContentContainer">
                   <span>No. of Episodes</span>
@@ -154,7 +147,6 @@ export function Details() {
                   </strong>
                 </div>
               </div>
-
             </div>
           )}
         </div>

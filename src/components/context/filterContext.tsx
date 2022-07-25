@@ -10,20 +10,16 @@ type FitlersContextData={
 export type Filter = {
   title: string
 }
-
 const FilterContext = createContext<FitlersContextData>(
   {} as FitlersContextData
 )
-
 export const FilterProvider = ({children}: {children: ReactNode})=>{
   const [filters] = useState<Filter[]>([
     {title: 'All'},
     {title: 'Movies'},
     {title: 'Tv Shows'}
   ])
-
   const [currentFilter, setCurrentFilter] = useState<Filter>(filters[0])
-
   return(
     <FilterContext.Provider
     value={{filters, currentFilter, setCurrentFilter}}>
