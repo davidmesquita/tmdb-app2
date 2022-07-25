@@ -1,5 +1,7 @@
 @import '../styles/typography.scss';
 @import '../styles/responsive.scss';
+@import '../styles/colors.scss';
+
 
 .container {
   padding-top: 12rem;
@@ -61,5 +63,60 @@
 
   span {
     @include bodyRegular;
+  }
+}
+.MovieGalery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+
+  @include breakPoint {
+    flex-direction: column;
+    
+    justify-content: center;
+  }
+}
+.inputContainer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1.6rem;
+  gap: 1.6rem;
+
+  height: 6.4rem;
+  width: 60%;
+
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1.2rem;
+  border: 0.1rem solid var(--gray700);
+
+  img {
+    width: 2.4rem;
+    height: 2.4rem;
+
+  }
+
+  input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0rem;
+    outline: none;
+
+    width: 27.2rem;
+    height: 4.0rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1.4rem;
+    @include caption;
+    color: var(--gray50);
+
+
+    &::placeholder{
+      color: var(--gray600);
+    }
+
+
   }
 }

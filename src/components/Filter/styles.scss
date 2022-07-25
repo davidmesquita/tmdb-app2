@@ -1,0 +1,35 @@
+@import '../../styles/typography.scss';
+@import '../../styles/colors.scss';
+.filter-container {
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8rem);
+  border-radius: 1.2rem;
+  display: flex;
+  height: 5.6rem;
+
+
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2.2rem;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.8rem;
+    color: var(--gray300);
+    @include linkRegular;
+    background-color: transparent;
+    border: none;
+    font-size: 1.6rem;
+  }
+  :hover{
+    background-color: var(--primary400);
+    color: var(--primary50);
+  }
+  &.active{
+    background-color: var(--primary400);
+    color: var(--primary50); 
+  }
+  
+
+}

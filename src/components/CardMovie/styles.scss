@@ -1,0 +1,101 @@
+@import'../../styles/typography.scss';
+@import '../../styles/responsive.scss';
+
+.cardContainer {
+  width: 28.2rem;
+  height: 48rem;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(32, 40, 62, 0.8);
+  backdrop-filter: blur(80px);
+  border-radius: 1.2rem;
+  cursor: pointer;
+  
+  border-width: 1px;
+  border: 1px solid transparent;
+
+  @include breakPoint {
+    width: 100%;
+    height: 60rem;
+  }
+  
+}
+.cardContent {
+  position: relative;
+
+  .thumbnail {
+    width: 100%;
+    height: 40rem;
+    border-radius: 0.8rem;
+    object-fit: cover;
+
+    @include breakPoint {
+      height: 52rem;
+    }
+  }
+}
+
+.movieGalery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+
+  @include breakPoint {
+    flex-direction: column;
+    
+    justify-content: center;
+  }
+}
+
+.titleCard {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.8rem;
+
+  strong {
+    @include linkRegular;
+    color: var(--gray50);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.ranking {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem;
+  position: absolute;
+  top: 1rem;
+  left: 0.8rem;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border-radius: 0.8rem;
+
+  img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  span {
+    @include bodyRegular;
+    color: var(--warning500);
+  }
+}
+.MovieGalery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+
+  @include breakPoint {
+    flex-direction: column;
+    
+    justify-content: center;
+  }
+}

@@ -1,0 +1,179 @@
+@import '../styles/responsive.scss';
+@import '../styles/typography.scss';
+
+.DetailsContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 12rem;
+  padding-bottom: 4rem;
+  max-width: 120rem;
+  margin: 0 auto;
+
+  @include breakPoint {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+.ContentBanner {
+  width: 100%;
+}
+
+.BackgroudBanner {
+  width: 100%;
+  height: 48rem;
+  border-radius: 4rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+}
+
+.ImageBanner {
+  width: 100%;
+  height: 100%;
+  border-radius: 4rem;
+  object-fit: cover;
+
+
+}
+
+.TitleContent {
+  width: 56rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(32, 40, 62, 0.8);
+  backdrop-filter: blur(24px);
+  border-radius: 2.4rem;
+  padding: 4rem;
+  gap: 0.8rem;
+
+  margin-top: calc(-4rem - 4rem);
+  margin-left: 7.8rem;
+
+  @include breakPoint {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  span {
+    @include bodyExtraSmall;
+    color: var(--primary200);
+  }
+
+  h1 {
+    @include headingThree;
+    color: var(--gray50);
+  }
+}
+
+.InfosContent {
+  display: flex;
+  gap: 8rem;
+  margin-top: 8rem;
+  padding: 0 7.8rem;
+
+  @include breakPoint {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+.ContainerPorter {
+  max-width: 50%;
+  height: 72rem;
+  position: sticky;
+  top: 12rem;
+
+  @include breakPoint {
+    height: 40rem;
+    width: 100%;
+    max-width: 100%;
+
+    position: initial;
+    top: initial;
+  }
+}
+
+.ImagePoster {
+  width: 100%;
+  height: 100%;
+  border-radius: 2.4rem;
+  object-fit: cover;
+}
+
+.InfosContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  max-width: 50%;
+
+  @include breakPoint {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .InfoTitle {
+    @include headingFour;
+    color: var(--gray50);
+  }
+
+  .Overview {
+    @include bodyLarge;
+    color: var(--gray300);
+  }
+
+}
+
+.Rankingcontainer {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border-radius: 0.8rem;
+  width: fit-content;
+
+  img {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  span {
+    @include bodyRegular;
+    color: var(--warning500);
+  }
+}
+.MovieInfos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2.4rem;
+}
+.StatusInfoContainer {
+  width: 100%;
+  display: flex;
+  gap: 2.4rem;
+  .StatusInfoContentContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    span {
+      @include bodyRegular;
+      color: var(--gray400);
+    }
+
+    strong {
+      @include bodyLarge;
+      color: var(--gray100);
+    }
+  }
+}
