@@ -7,7 +7,8 @@ import { useFiltersContext, Filter } from '../components/context/filterContext'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useContent } from '../hooks/useContent'
-import {apiKey} from '../api'
+import { apiKey } from '../api'
+import searchicon from '../assets/icons/searchicon.svg'
 
 type ContentData = {
   id: number
@@ -27,7 +28,7 @@ export function Home() {
   const { filters, currentFilter, setCurrentFilter } = useFiltersContext()
   const [data, setData] = useState<ContentData[]>([])
   const [query, setQuery] = useState("")
-  
+
 
   const { loadMovies, loadTvShows } = useContent()
   const navigate = useNavigate()
@@ -59,9 +60,21 @@ export function Home() {
   function navigateDetails(id: number, typeOfContent: string) {
     navigate(`/detail/${typeOfContent}/${id}`)
   }
-  const searchTitle=()=>{}
- 
-  
+  useEffect(() => {
+
+    if (query) {
+      fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`)
+
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response)
+        })
+    }
+
+  }, [query])
+
+
+
   return (
     <div className='container'>
       <section className='pageContainer'>
@@ -74,8 +87,16 @@ export function Home() {
           make a suggestion. 😉
         </p>
         <div className="inputTxt">
-          <InputTxt onChange={e => setQuery(e.target.value)}/>
-         
+          <div id='form' className='inputContainer'>
+            <img src={searchicon}>
+            </img>
+            <input type="search" value={query} id='search'
+              placeholder='Search Movies or TV Shows'
+              onChange={(e)=>setQuery(e.target.value)}
+            >
+            </input>
+          </div >
+
         </div>
       </section>
       <div className='tabFilter'>
