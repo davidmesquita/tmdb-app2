@@ -22,12 +22,21 @@ type SearchProps = {
   title: string
   onChange: (text: string) => void
 }
+type searchResultsData = {
+  id: number
+  title: string
+  original_name: string
+  poster_path: string
+  vote_average: number
+
+}
 
 
 export function Home() {
   const { filters, currentFilter, setCurrentFilter } = useFiltersContext()
   const [data, setData] = useState<ContentData[]>([])
   const [query, setQuery] = useState("")
+  const [searchResults, setSearchResults] = useState<searchResultsData[]>([])
 
 
   const { loadMovies, loadTvShows } = useContent()
@@ -67,11 +76,16 @@ export function Home() {
 
         .then((response) => response.json())
         .then((response) => {
-          console.log(response)
+          console.log(response.results)
+          setSearchResults(response.results)
+
         })
     }
 
   }, [query])
+
+
+
 
 
 
@@ -92,39 +106,67 @@ export function Home() {
             </img>
             <input type="search" value={query} id='search'
               placeholder='Search Movies or TV Shows'
-              onChange={(e)=>setQuery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
             >
             </input>
           </div >
 
         </div>
       </section>
-      <div className='tabFilter'>
-        <Filters />
 
-      </div>
-      <section>
-        <header className="category">
-          <strong>{currentFilter.title}</strong>
-
-        </header>
+      {query.length > 0 ?
         <>
-          <div className='MovieGalery'>
-            {data?.map((content) => (
-              <Card key={content.id}
-                id={content.id}
-                title={content.title || content.original_name}
-                poster_path={content.poster_path}
-                vote_average={content.vote_average}
-                onClick={() => { navigateDetails(content.id, content.title ? 'movie' : 'tv') }}
-              />
-            ))}
+         
+
+          <section>
+            <header className="category">
+              <strong>Results ({searchResults.length})</strong>
+
+            </header>
+
+            <div className='MovieGalery'>
+              {searchResults?.map((content) => (
+                <Card key={content.id}
+                  id={content.id}
+                  title={content.title || content.original_name}
+                  poster_path={content.poster_path}
+                  vote_average={content.vote_average}
+                  onClick={() => { navigateDetails(content.id, content.title ? 'movie' : 'tv') }}
+                />
+              ))}
+            </div>
+
+
+          </section>
+        </> :
+        <>
+          <div className='tabFilter'>
+            <Filters />
+
           </div>
+
+          <section>
+            <header className="category">
+              <strong>{currentFilter.title}</strong>
+
+            </header>
+
+            <div className='MovieGalery'>
+              {data?.map((content) => (
+                <Card key={content.id}
+                  id={content.id}
+                  title={content.title || content.original_name}
+                  poster_path={content.poster_path}
+                  vote_average={content.vote_average}
+                  onClick={() => { navigateDetails(content.id, content.title ? 'movie' : 'tv') }}
+                />
+              ))}
+            </div>
+
+
+          </section>
         </>
-
-
-
-      </section>
+      }
     </div>
   )
 

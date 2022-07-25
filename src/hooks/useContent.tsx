@@ -43,7 +43,8 @@ export function useContent() {
     );
     return response.data.results;
   }
-  async function loadMovie(id: number): Promise<ContentDetail> {
+  
+  async function loadMovieDetails(id: number): Promise<ContentDetail> {
     const response = await api.get<ContentDetail>(
       `/movie/${id}?api_key=${apiKey}&language=en-US`
     );
@@ -58,7 +59,7 @@ export function useContent() {
 
   }
 
-  async function loadTvShow(id: number): Promise<ContentDetail> {
+  async function loadTvShowDetails(id: number): Promise<ContentDetail> {
     const response = await api.get<ContentDetail>(
       `/tv/${id}?api_key=${apiKey}&language=en-US`
     );
@@ -70,8 +71,8 @@ export function useContent() {
   return {
 
     loadTvShows,
-    loadTvShow,
+    loadTvShowDetails,
     loadMovies,
-    loadMovie,
+    loadMovieDetails,
   }
 }

@@ -8,15 +8,15 @@ import './styles.scss'
 export function Details() {
   const IMAGE_PATH = "https://image.tmdb.org/t/p/original"
   const { id, typeContent } = useParams()
-  const { loadMovie, loadTvShow } = useContent()
+  const { loadMovieDetails, loadTvShowDetails } = useContent()
   const [content, setContent] = useState<ContentDetail>()
 
   async function loadContent() {
     let response: ContentDetail
     if (typeContent === "movie") {
-      response = await loadMovie(+String(id))
+      response = await loadMovieDetails(+String(id))
     } else {
-      response = await loadTvShow(+String(id))
+      response = await loadTvShowDetails(+String(id))
     }
     setContent(response)
   }
